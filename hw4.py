@@ -83,9 +83,23 @@ Example:
 		[1, 6]
 """
 def longest_unique_subarray(arr):
-	pass
-
-
+	chars_dict = {}
+	start = 0
+	end = 0
+	max = 0
+	for i in range(0, len(arr)):
+		for j in range(i, len(arr)):
+			if arr[j] not in chars_dict:
+				chars_dict[arr[j]] = 1
+				if len(chars_dict) > max:
+					max = len(chars_dict)
+					start = i
+					end = j
+			else:
+				chars_dict = {}
+		chars_dict = {}
+	return [start,end]
+longest_unique_subarray([1, 2, 3, 1, 4, 5, 6])
 """
 string_my_one_true_love
 
