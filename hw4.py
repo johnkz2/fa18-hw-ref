@@ -99,7 +99,6 @@ def longest_unique_subarray(arr):
 				chars_dict = {}
 		chars_dict = {}
 	return [start,end]
-longest_unique_subarray([1, 2, 3, 1, 4, 5, 6])
 """
 string_my_one_true_love
 
@@ -140,7 +139,21 @@ Example 3:
 		False
 """
 def string_my_one_true_love(s):
-	pass
+	chars_dict = {}
+	for char in s:
+		if char not in chars_dict:
+			chars_dict[char] = 1
+		else:
+			chars_dict[char] += 1
+	value = chars_dict[s[0]]
+	flag = true
+	for key in chars_dict:
+		if chars_dict[key] != value:
+			flag = false
+	if flag:
+		return True
+
+
 
 
 """
@@ -158,9 +171,22 @@ Example:
 		1961
 """
 def alive_people(data):
-	pass
-
-
+	people_alive = {}
+	for list in data:
+		for year in range(list[0], list[0] + list[1] + 1):
+			if year not in people_alive:
+				people_alive[year] = 1
+			else:
+				people_alive[year] += 1
+	max = 0
+	maxKey = ''
+	for year in people_alive:
+		if people_alive[year] > max:
+			max = people_alive[year]
+			maxKey = year
+	print maxKey
+	return maxKey
+alive_people([[1920, 80], [1940, 22], [1961, 10]])
 """
 three_sum
 
