@@ -13,7 +13,22 @@ most_common_char
 Given an input string s, return the most common character in s.
 """
 def most_common_char(s):
-	pass
+	if s is None or s == "":
+		return None
+	char_dict = {}
+	for char in s:
+		if char not in char_dict:
+			char_dict[char] = 1
+		else:
+			char_dict[char] += 1
+	max = 0
+	maxKey = ''
+	for key in char_dict:
+		if char_dict[key] > max:
+			max = char_dict[key]
+			maxKey = key
+	return maxKey
+
 
 
 """
@@ -36,9 +51,21 @@ Example 2:
 	Return:
 		None
 """
+import string
 def alphabet_finder(s):
-	pass
-
+	if s is None or s == "":
+		return None
+	chars_alphabet = {}
+	count = 0
+	for char in s:
+		count += 1
+		if char not in chars_alphabet:
+			chars_alphabet[char] = 1
+		if len(chars_alphabet) == 26:
+			break
+	if len(chars_alphabet) != 26:
+		return None
+	return s[0:count]
 
 """
 longest_unique_subarray
